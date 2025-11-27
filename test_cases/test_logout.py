@@ -20,7 +20,7 @@ class TestLogout:
         logout = LogoutPage(self.driver)
 
         # Login first
-        login.login("binisha077bei010@gmail.com", "Bhoj@123")
+        login.login("loginproject03@gmail.com", "Bhoj@123")
         time.sleep(2)
 
         # Open account dropdown
@@ -34,6 +34,3 @@ class TestLogout:
         # Confirm logout
         logout.confirm_logout()
         time.sleep(1)
-
-        # Optional assert
-        # assert "Login" in self.driver.page_source
