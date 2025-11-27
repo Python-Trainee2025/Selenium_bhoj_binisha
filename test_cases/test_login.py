@@ -12,5 +12,5 @@ class TestLogin(BaseTest):
 
         login = LoginPage(self.driver)
 
-        # Use credentials stored inside BaseTest
+       
         login.login(self.email, self.password)
