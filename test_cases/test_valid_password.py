@@ -48,5 +48,5 @@ class TestChangePassword(BaseTest):
         time.sleep(2)
 
         msg = profile.get_success_text()
-        print(f"Success message shown: {msg}")  # ← ONLY PRINT, NO ASSERT
+        print(f"Success message shown: {msg}")  
         print("Password changed successfully!")
