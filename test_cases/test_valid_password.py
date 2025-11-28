@@ -1,7 +1,7 @@
 import time
 from setup.base_test2 import BaseTest
 from page_objects.change_passwordpom.change_page import ChangePasswordPage
-from page_objects.loginpom.loginpage import LoginPage
+from test_case.loginpage import LoginPage
 
 class TestChangePassword(BaseTest):
 
@@ -42,11 +42,11 @@ class TestChangePassword(BaseTest):
         print("Error displayed: Weak password")
 
         print("\n STEP 4: Correct password (Success) ")
-        new_pass = "Bhoj@123"
+        new_pass = "Project@123"
 
         profile.change_password(self.password, new_pass, new_pass)
         time.sleep(2)
 
         msg = profile.get_success_text()
-        print(f"Success message shown: {msg}")  # ← ONLY PRINT, NO ASSERT
+        print(f"Success message shown: {msg}")
         print("Password changed successfully!")

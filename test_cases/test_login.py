@@ -1,6 +1,6 @@
 import time
 from setup.base_test2 import BaseTest
-from page_objects.loginpom.loginpage import LoginPage
+from test_case.loginpage import LoginPage
 
 
 class TestLogin(BaseTest):
@@ -11,6 +11,4 @@ class TestLogin(BaseTest):
         time.sleep(3)
 
         login = LoginPage(self.driver)
-
-        # Use credentials stored inside BaseTest
         login.login(self.email, self.password)

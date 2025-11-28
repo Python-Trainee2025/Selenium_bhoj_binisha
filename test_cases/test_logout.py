@@ -1,6 +1,6 @@
 import time
 from selenium import webdriver
-from page_objects.loginpom.loginpage import LoginPage
+from test_case.loginpage import LoginPage
 from page_objects.logoutpom.logout_page import LogoutPage
 
 class TestLogout:
@@ -35,5 +35,3 @@ class TestLogout:
         logout.confirm_logout()
         time.sleep(1)
 
-        # Optional assert
-        # assert "Login" in self.driver.page_source

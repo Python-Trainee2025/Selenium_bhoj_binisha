@@ -1,78 +1,49 @@
 import time
-from selenium import webdriver
-from page_objects.loginpom.loginpage import LoginPage
+from setup.base_test2 import BaseTest
+from test_case.loginpage import LoginPage
 from page_objects.locationpom.location_page import LocationPage
 from page_objects.search_restaurant_food.res_page import ResPage
+from page_objects.cartpom.cartpage import CartPage
 
-from page_object import CartPage
+
+class TestRestaurantSearch(BaseTest):
+
+    def test_login_and_search_restaurants(self):
 
 
-class TestCart:
-
-    def setup_method(self):
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
-
-    def teardown_method(self):
-        self.driver.quit()
-
-    def test_cart_quantity(self):
-
-        self.driver.get("https://www.bhojdeals.com/")
-        time.sleep(2)
+        self.open_url("https://www.bhojdeals.com/")
+        time.sleep(3)
 
         login = LoginPage(self.driver)
-        location= LocationPage(self.driver)
-        search_res = ResPage(self.driver)
+        location = LocationPage(self.driver)
+        res = ResPage(self.driver)
+        cart=CartPage(self.driver)
 
-        cart = CartPage(self.driver)
 
-        # Login
-        login.login("loginproject03@gmail.com", "Project@123")
+        # LOGIN FIRST
+        login.login(self.email, self.password)
+        time.sleep(4)
 
+
+        # SELECT LOCATION
         location.get_food_delivered()
         time.sleep(2)
-
         location.select_kathmandu()
-        time.sleep(2)
+        time.sleep(3)
 
-        search_res.search_item("pizza")
-        time.sleep(2)
-        search_res.click_dropdown_pizza_cutter()
-        search_res.click_card_pizza_cutter()
-
-        search_res.search_food_item("cheese")
-
-
-
-        # Add cheese pizza
-        cart.add_first_item()
-        time.sleep(1)
-
-        cart.open_cart()
-        time.sleep(1)
-
-        # Increase quantity
-        cart.increase_quantity()
-        time.sleep(1)
-
-        # Decrease quantity
-        cart.decrease_quantity()
-        time.sleep(1)
-
-        # Delete item
-        cart.delete_item()
-        time.sleep(1)
-
-
-        # Search CHICKEN
-        search_res.search_food_item("chicken")
+        #  SEARCH PIZZA CUTTER RESTAURANT
+        res.search_item("pizza")
+        time.sleep(5)
+        res.click_dropdown_pizza_cutter()
+        time.sleep(3)
+        res.click_card_pizza_cutter()
+        time.sleep(3)
+        res.search_food_item("chicken")
         time.sleep(2)
 
         # Add chicken pizza
         cart.add_first_item()
         time.sleep(1)
-
         cart.open_cart()
         time.sleep(1)
 
@@ -82,15 +53,72 @@ class TestCart:
         cart.increase_quantity()
         time.sleep(1)
 
-        search_res.search_food_item("cheese")
+        # Delete item
+        cart.delete_item()
+        time.sleep(1)
+
+        #Search next item cheese
+        res.search_food_item("cheese")
 
         # Add cheese pizza
         cart.add_first_item()
         time.sleep(1)
-
         cart.open_cart()
         time.sleep(1)
 
         # Increase quantity
         cart.increase_quantity()
         time.sleep(1)
+        res.search_food_item("chicken")
+        time.sleep(2)
+
+        # Add chicken pizza
+        cart.add_first_item()
+        time.sleep(1)
+        cart.open_cart()
+        time.sleep(1)
+
+        # Increase chicken pizza by 2
+        cart.increase_quantity()
+        time.sleep(1)
+        cart.increase_quantity()
+        time.sleep(1)
+        print("Pizza added to cart")
+
+
+        #GO BACK to search again
+        self.driver.back()
+        time.sleep(2)
+
+        #choose location
+        location.select_kathmandu()
+        time.sleep(3)
+
+
+        #  SEARCH SYANKO RESTAURANT
+        res.search_item("roll")
+        time.sleep(5)
+        res.click_dropdown_syanko()
+        time.sleep(5)
+        res.click_syanko_card()
+        time.sleep(3)
+        res.search_food_item("paneer")
+        time.sleep(2)
+
+        # Add paneer roll
+        cart.add_first_item()
+        time.sleep(4)
+        cart.click_yes_if_popup()
+        cart.open_cart()
+        time.sleep(1)
+
+        # Increase quantity
+        cart.increase_quantity()
+        time.sleep(1)
+        print("Syanko Katti Roll opened")
+
+        cart.increase_quantity()
+        time.sleep(1)
+
+
+

@@ -2,7 +2,7 @@ import time
 from setup.base_test2 import BaseTest
 from page_objects.locationpom.location_page import LocationPage
 
-from page_objects.loginpom.loginpage import LoginPage
+from test_case.loginpage import LoginPage
 
 
 class TestLocation(BaseTest):
