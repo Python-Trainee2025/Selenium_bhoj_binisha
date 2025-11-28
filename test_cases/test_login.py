@@ -11,4 +11,9 @@ class TestLogin(BaseTest):
         time.sleep(3)
 
         login = LoginPage(self.driver)
+<<<<<<< HEAD
+=======
+
+       
+>>>>>>> a416327accb16a9584b6d982b9b88a6426acc2ef
         login.login(self.email, self.password)
