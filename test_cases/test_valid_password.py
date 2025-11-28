@@ -1,7 +1,7 @@
 import time
 from setup.base_test2 import BaseTest
 from page_objects.change_passwordpom.change_page import ChangePasswordPage
-from test_case.loginpage import LoginPage
+from page_objects.loginpom.login_page import LoginPage
 
 class TestChangePassword(BaseTest):
 
@@ -13,6 +13,7 @@ class TestChangePassword(BaseTest):
         login = LoginPage(self.driver)
 
         # LOGIN
+        login.open_login()
         login.login(self.email, self.password)
         time.sleep(2)
 
@@ -48,10 +49,7 @@ class TestChangePassword(BaseTest):
         time.sleep(2)
 
         msg = profile.get_success_text()
-<<<<<<< HEAD
         print(f"Success message shown: {msg}")
         print("Password changed successfully!")
-=======
-        print(f"Success message shown: {msg}")  
-        print("Password changed successfully!")
->>>>>>> a416327accb16a9584b6d982b9b88a6426acc2ef
+        assert True
+

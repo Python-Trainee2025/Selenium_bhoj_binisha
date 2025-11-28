@@ -1,6 +1,6 @@
 import time
 from setup.base_test2 import BaseTest
-from test_case.loginpage import LoginPage
+from page_objects.loginpom.login_page import LoginPage
 from page_objects.locationpom.location_page import LocationPage
 from page_objects.search_restaurant_food.res_page import ResPage
 
@@ -16,7 +16,7 @@ class TestRestaurantSearch(BaseTest):
         restaurant = ResPage(self.driver)
 
         # LOGIN FIRST
-
+        login.open_login()
         login.login(self.email, self.password)
         time.sleep(4)
 

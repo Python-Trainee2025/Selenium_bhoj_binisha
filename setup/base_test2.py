@@ -34,7 +34,7 @@ class BaseTest:
 
         # If no JSON, store credentials directly here or inside test
         self.email = "loginproject03@gmail.com"
-        self.password = "Project@123"
+        self.password = "Bhoj@123"
 
     def teardown_method(self):
         """Close browser after each test."""

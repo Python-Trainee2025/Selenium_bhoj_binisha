@@ -1,6 +1,6 @@
 import time
 from setup.base_test2 import BaseTest
-from test_case.loginpage import LoginPage
+from page_objects.loginpom.login_page import LoginPage
 
 class TestLogin(BaseTest):
 
@@ -8,7 +8,7 @@ class TestLogin(BaseTest):
         self.open_url("https://www.bhojdeals.com/")
         time.sleep(2)
         login = LoginPage(self.driver)
-
+        login.open_login()
         login.login("wrong@mail.com", "wrongPass123")
 
         error = login.get_error_message()

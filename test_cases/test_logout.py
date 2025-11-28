@@ -1,26 +1,21 @@
 import time
-from selenium import webdriver
-from test_case.loginpage import LoginPage
+from setup.base_test2 import BaseTest
+from page_objects.loginpom.login_page import LoginPage
 from page_objects.logoutpom.logout_page import LogoutPage
 
-class TestLogout:
-
-    def setup_method(self):
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
-
-    def teardown_method(self):
-        self.driver.quit()
+class TestLogout(BaseTest):
 
     def test_logout(self):
-        self.driver.get("https://www.bhojdeals.com/")
+        self.open_url("https://www.bhojdeals.com/")
         time.sleep(4)
+
 
         login = LoginPage(self.driver)
         logout = LogoutPage(self.driver)
 
         # Login first
-        login.login("loginproject03@gmail.com", "Bhoj@123")
+        login.open_login()
+        login.login(self.email, self.password)
         time.sleep(2)
 
         # Open account dropdown
@@ -34,7 +29,5 @@ class TestLogout:
         # Confirm logout
         logout.confirm_logout()
         time.sleep(1)
-<<<<<<< HEAD
 
-=======
->>>>>>> a416327accb16a9584b6d982b9b88a6426acc2ef
+

@@ -1,6 +1,6 @@
 import time
 from setup.base_test2 import BaseTest
-from test_case.loginpage import LoginPage
+from page_objects.loginpom.login_page import LoginPage
 
 
 class TestLogin(BaseTest):
@@ -9,11 +9,7 @@ class TestLogin(BaseTest):
         # Open the site using BaseTest method
         self.open_url("https://www.bhojdeals.com/")
         time.sleep(3)
-
         login = LoginPage(self.driver)
-<<<<<<< HEAD
-=======
 
-       
->>>>>>> a416327accb16a9584b6d982b9b88a6426acc2ef
+        login.open_login()
         login.login(self.email, self.password)

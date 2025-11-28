@@ -44,9 +44,9 @@ class TestCheckout(BaseTest):
         cart.open_cart()
         time.sleep(3.5)
         cart.increase_quantity()
-        time.sleep(3.5)
+        time.sleep(2.5)
         cart.decrease_quantity()
-        time.sleep(3.5)
+        time.sleep(2.5)
 
 
         # search for next item cheese pizza
@@ -84,12 +84,12 @@ class TestCheckout(BaseTest):
 
         # Add paneer roll
         cart.add_first_item()
-        time.sleep(3)
+        time.sleep(3.5)
         cart.click_yes_if_popup()
         cart.open_cart()
         time.sleep(3.5)
         cart.increase_quantity()
-        time.sleep(3.5)
+        time.sleep(3)
 
         # go to checkout
 
@@ -99,9 +99,11 @@ class TestCheckout(BaseTest):
         login.login_before()
         time.sleep(2)
 
-        login.login(self.email, self.password)
-        time.sleep(2)
+        login.login("wrong@mail.com", "wrongPass123")
+        login.get_error_message()
+        login.clear_fields()
 
+        login.login(self.email, self.password)
 
         # complete checkout
 
@@ -127,36 +129,35 @@ class TestCheckout(BaseTest):
         time.sleep(3)
         profile.click_change_password()
 
-        print("\n STEP 1: Wrong old password ")
+        print("\n  Wrong old password ")
         profile.change_password("WrongPass@123", "NewPass@123", "NewPass@123")
         time.sleep(1)
 
         assert "valid old password" in profile.get_wrong_old_password_text()
         print(" Error displayed: Wrong old password")
 
-        print("\n STEP 2: Password mismatch ")
+        print("\n Password mismatch ")
         profile.change_password(self.password, "NewPass@123", "Mismatch@123")
         time.sleep(1)
 
         assert "match" in profile.get_error_text()
         print(" Error displayed: Password mismatch")
 
-        print("\n STEP 3: Weak password ")
+        print("\nWeak password ")
         profile.change_password(self.password, "weak", "weak")
         time.sleep(1)
 
         assert "8" in profile.get_error_text() or "character" in profile.get_error_text()
         print("Error displayed: Weak password")
 
-        print("\n STEP 4: Correct password (Success) ")
-        new_pass = "Project@123"
+        print("\n Correct password (Success) ")
+        new_pass = "Bhoj@123"
 
         profile.change_password(self.password, new_pass, new_pass)
-        time.sleep(2)
-
         msg = profile.get_success_text()
         print(f"Success message shown: {msg}")
         print("Password changed successfully!")
+        assert True
 
         # logout
 

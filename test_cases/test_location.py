@@ -1,8 +1,7 @@
 import time
 from setup.base_test2 import BaseTest
 from page_objects.locationpom.location_page import LocationPage
-
-from test_case.loginpage import LoginPage
+from page_objects.loginpom.login_page import LoginPage
 
 
 class TestLocation(BaseTest):
@@ -17,6 +16,7 @@ class TestLocation(BaseTest):
 
 
         # LOGIN
+        login.open_login()
         login.login(self.email, self.password)
         time.sleep(2)
 

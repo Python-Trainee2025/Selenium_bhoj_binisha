@@ -1,5 +1,4 @@
 from selenium.webdriver.support.ui import WebDriverWait
-import time
 from selenium.webdriver.support import expected_conditions as EC
 from page_objects.locationpom.location_locator import LocationLocators
 
