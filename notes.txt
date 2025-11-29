@@ -1,0 +1,3 @@
+add logging instead of printing
+added pytest.ini for logging configure and reports creation
+other than so far  things look good if any specific issue or question we can discuss

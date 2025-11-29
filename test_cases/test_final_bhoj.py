@@ -1,3 +1,4 @@
+import logging
 import time
 from setup.base_test2 import BaseTest
 from page_objects.loginpom.login_page import LoginPage
@@ -130,6 +131,7 @@ class TestCheckout(BaseTest):
         profile.click_change_password()
 
         print("\n  Wrong old password ")
+        logging.info("Wrong old password") ##use this instead of print
         profile.change_password("WrongPass@123", "NewPass@123", "NewPass@123")
         time.sleep(1)
 
