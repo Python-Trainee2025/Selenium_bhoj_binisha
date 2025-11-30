@@ -1,3 +1,4 @@
+import logging
 import time
 from setup.base_test2 import BaseTest
 from page_objects.loginpom.login_page import LoginPage
@@ -51,45 +52,45 @@ class TestCheckout(BaseTest):
 
         # search for next item cheese pizza
         search_res.search_food_item("cheese")
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.add_first_item()
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.open_cart()
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.increase_quantity()
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.delete_item()
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.add_first_item()
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.open_cart()
-        time.sleep(3.5)
+        time.sleep(1.5)
 
 
         # go back to search again
         self.driver.back()
-        time.sleep(2)
+        time.sleep(1.5)
         location.select_kathmandu()
-        time.sleep(2)
+        time.sleep(1.5)
 
         #  search syanko restaurant
         search_res.search_item("roll")
-        time.sleep(3)
+        time.sleep(1.5)
         search_res.click_dropdown_syanko()
-        time.sleep(3)
+        time.sleep(1.5)
         search_res.click_syanko_card()
-        time.sleep(3.5)
+        time.sleep(1.5)
         search_res.search_food_item("paneer")
-        time.sleep(3.5)
+        time.sleep(1.5)
 
         # Add paneer roll
         cart.add_first_item()
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.click_yes_if_popup()
         cart.open_cart()
-        time.sleep(3.5)
+        time.sleep(1.5)
         cart.increase_quantity()
-        time.sleep(3)
+        time.sleep(1.5)
 
         # go to checkout
 
@@ -115,8 +116,8 @@ class TestCheckout(BaseTest):
         subtotal = checkout.subtotal.text
         total = checkout.total_amount.text
 
-        print("Subtotal:", subtotal)
-        print("Total:", total)
+        logging.info(f"Subtotal: {subtotal}")
+        logging.info(f"Total: {total}")
 
         assert "Rs" in subtotal
         assert "Rs" in total
@@ -128,35 +129,36 @@ class TestCheckout(BaseTest):
         profile.open_account()
         time.sleep(3)
         profile.click_change_password()
+        time.sleep(2)
 
-        print("\n  Wrong old password ")
+        logging.info("\n  Wrong old password ")
         profile.change_password("WrongPass@123", "NewPass@123", "NewPass@123")
         time.sleep(1)
 
         assert "valid old password" in profile.get_wrong_old_password_text()
-        print(" Error displayed: Wrong old password")
+        logging.info(" Error displayed: Wrong old password")
 
-        print("\n Password mismatch ")
+        logging.info("\n Password mismatch ")
         profile.change_password(self.password, "NewPass@123", "Mismatch@123")
         time.sleep(1)
 
         assert "match" in profile.get_error_text()
-        print(" Error displayed: Password mismatch")
+        logging.info(" Error displayed: Password mismatch")
 
-        print("\nWeak password ")
+        logging.info("\nWeak password ")
         profile.change_password(self.password, "weak", "weak")
         time.sleep(1)
 
         assert "8" in profile.get_error_text() or "character" in profile.get_error_text()
-        print("Error displayed: Weak password")
+        logging.info("Error displayed: Weak password")
 
-        print("\n Correct password (Success) ")
-        new_pass = "Bhoj@123"
+        logging.info("\n Correct password (Success) ")
+        new_pass = "Project@123"
 
         profile.change_password(self.password, new_pass, new_pass)
         msg = profile.get_success_text()
-        print(f"Success message shown: {msg}")
-        print("Password changed successfully!")
+        logging.info(f"Success message shown: {msg}")
+        logging.info("Password changed successfully!")
         assert True
 
         # logout

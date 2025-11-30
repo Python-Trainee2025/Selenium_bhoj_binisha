@@ -1,4 +1,5 @@
 import time
+import logging
 from setup.base_test2 import BaseTest
 from page_objects.loginpom.login_page import LoginPage
 from page_objects.locationpom.location_page import LocationPage
@@ -84,7 +85,7 @@ class TestRestaurantSearch(BaseTest):
         time.sleep(1)
         cart.increase_quantity()
         time.sleep(1)
-        print("Pizza added to cart")
+        logging.info("Pizza added to cart")
 
 
         #GO BACK to search again
@@ -116,7 +117,7 @@ class TestRestaurantSearch(BaseTest):
         # Increase quantity
         cart.increase_quantity()
         time.sleep(1)
-        print("Syanko Katti Roll opened")
+        logging.info("Syanko Katti Roll opened")
 
         cart.increase_quantity()
         time.sleep(1)

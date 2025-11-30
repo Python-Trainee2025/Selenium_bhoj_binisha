@@ -15,4 +15,4 @@ class CheckoutLocators:
 
 
     CASH_ON_DELIVERY = (By.CSS_SELECTOR, "label[for='radiobtn']")
-    CONFIRM_ORDER_BTN = (By.CLASS,"btn btn-secondary")
+    CONFIRM_ORDER_BTN = (By.CLASS_NAME,"btn btn-secondary")

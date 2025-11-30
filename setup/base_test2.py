@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class BaseTest:
 
     def setup_method(self):
-        """Initialize Chrome driver with best recommended settings."""
+
 
         chrome_options = Options()
 
@@ -31,16 +31,14 @@ class BaseTest:
 
         self.driver = webdriver.Chrome(options=chrome_options)
         logger.info("Chrome launched successfully.")
-
-        # If no JSON, store credentials directly here or inside test
         self.email = "loginproject03@gmail.com"
         self.password = "Bhoj@123"
 
     def teardown_method(self):
-        """Close browser after each test."""
+
         self.driver.quit()
 
     def open_url(self, url):
-        """Navigate to URL."""
+
         logger.info(f"Opening URL: {url}")
         self.driver.get(url)

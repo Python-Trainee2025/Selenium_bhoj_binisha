@@ -1,4 +1,5 @@
 import time
+import logging
 from setup.base_test2 import BaseTest
 from page_objects.loginpom.login_page import LoginPage
 from page_objects.locationpom.location_page import LocationPage
@@ -37,7 +38,8 @@ class TestRestaurantSearch(BaseTest):
         time.sleep(3)
         restaurant.search_food_item("cheese")
         time.sleep(2)
-        print("Pizza Cutter opened")
+        logging.info("Pizza Cutter opened")
+
 
         # GO BACK to search again
 
@@ -56,4 +58,4 @@ class TestRestaurantSearch(BaseTest):
         time.sleep(3)
         restaurant.search_food_item("chicken")
         time.sleep(2)
-        print("Syanko Katti Roll opened")
+        logging.info("Syanko Katti Roll opened")
